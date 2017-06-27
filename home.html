@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>网易教育</title>
+	<link rel="stylesheet" type="text/css" href="./assets/css/base.css">
+</head>
+<body id="app">
+	<header>
+		<div class="logo">EDU | 网易教育产品部</div>
+		<div>关注 粉丝</div>
+		<nav id="nav"></nav>
+	</header>
+	<section class="banner">
+		<img src="./assets/images/banner1.jpg">
+	</section>
+	<section class="course-container" id="course"></section>
+	<div class=""></div>
+	<div class="carousel-container"></div>
+</body>
+<script type="text/javascript" src="./lib/config.js"></script>
+<script type="text/javascript">
+loadPage()
+	function loadPage () {
+		loadNav()
+	}
+	function loadNav () {
+		let dom = document.querySelector('#nav')
+		let docfrag  = document.createDocumentFragment()
+		navs.map((i) => {
+			let nav = document.createElement('a')
+			nav.innerText = i.title
+			nav.href = i.link
+			docfrag.appendChild(nav)
+		})
+		dom.appendChild(docfrag)
+	}
+	function loadCourse () {
+		let target = document.querySelector('#course')
+		target.innerHTML = template
+	}
+</script>
+</html>
