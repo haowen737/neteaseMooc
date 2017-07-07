@@ -2,42 +2,133 @@
 <html>
 <meta charset="utf-8">
 <head>
-	<title>网易教育</title>
-	<link rel="stylesheet" type="text/css" href="./assets/css/base.css">
+  <title>网易教育</title>
+  <link rel="stylesheet" type="text/css" href="./assets/css/base.css">
 </head>
 <body id="app">
-	<header>
-		<div class="logo">EDU | 网易教育产品部</div>
-		<div>关注 粉丝</div>
-		<nav id="nav"></nav>
-	</header>
-	<section class="banner">
-		<img src="./assets/images/banner1.jpg">
-	</section>
-	<section class="course-container" id="course"></section>
-	<div class=""></div>
-	<div class="carousel-container"></div>
+  <div class="ad">
+    网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势！<a>立即查看&gt;</a>
+  </div>
+  <header>
+    <div class="logo-container">
+      <span class="logo">EDU |</span><span class="brand"> 网易教育产品部</span>
+      <div class="fans-container">
+        <span class="fans-follow"><i></i>&nbsp;关注</span>
+        <span class="fans-count">粉丝</span>
+      </div>
+    </div>
+    <nav id="nav"></nav>
+  </header>
+  <section class="carousel-container" id="carousel" onmouseenter="stopCarousel()" onmouseleave="startCarousel()">
+    <img src="./assets/images/banner0.jpg" id="carouselImg" class="animation-fade">
+    <div class="carousel-control" id="carouselControl"></div>
+  </section>
+  <section class="courses">
+    <div class="course">
+      <div class="course-aside"></div>
+      <div class="course-main">
+        <div class="course-titel">云课堂</div>
+        <div class="course-content">网易旗下大型在线学习平台，该平台面向学习者提供海量免费、优质课程,创新的个性化学习体验，自由开放的交流互动环境。</div>
+        <div class="course-footer">了解更多 </div>
+      </div>
+    </div>
+    <div class="course">
+      <div class="course-aside"></div>
+      <div class="course-main">
+        <div class="course-titel">云课堂</div>
+        <div class="course-content">网易旗下大型在线学习平台，该平台面向学习者提供海量免费、优质课程,创新的个性化学习体验，自由开放的交流互动环境。</div>
+        <div class="course-footer">了解更多 </div>
+      </div>
+    </div>
+    <div class="course">
+      <div class="course-aside"></div>
+      <div class="course-main">
+        <div class="course-titel">云课堂</div>
+        <div class="course-content">网易旗下大型在线学习平台，该平台面向学习者提供海量免费、优质课程,创新的个性化学习体验，自由开放的交流互动环境。</div>
+        <div class="course-footer">了解更多 </div>
+      </div>
+    </div>
+  </section>
+  <ul class="intro-wrap">
+    <li><img src="./assets/images/intro-1.jpg"></li>
+    <li><img src="./assets/images/intro-1.jpg"></li>
+    <li><img src="./assets/images/intro-1.jpg"></li>
+    <li><img src="./assets/images/intro-1.jpg"></li>
+    <li><img src="./assets/images/intro-1.jpg"></li>
+  </ul>
+  <div class="main">
+    <div class="class-wrap">
+      <div class="tab" id="tab">
+        <a onclick="switchTab(0)" class="tab-active">产品设计</a><a onclick="switchTab(1)">编程语言</a>
+        <ul class="class-list">
+          <li>
+            <div class="class-img"></div>
+            <div class="class-content">
+              <p class="class-title">title</p>
+              <p class="class-name">name</p>
+              <p class="class-viewer">123</p>
+              <p class="class-price">12312</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-aside"></div>
+  </div>
 </body>
 <script type="text/javascript" src="./lib/config.js"></script>
+<script type="text/javascript" src="./lib/carousel.js"></script>
+<script type="text/javascript" src="./lib/http.js"></script>
 <script type="text/javascript">
-loadPage()
-	function loadPage () {
-		loadNav()
-	}
-	function loadNav () {
-		let dom = document.querySelector('#nav')
-		let docfrag  = document.createDocumentFragment()
-		navs.map((i) => {
-			let nav = document.createElement('a')
-			nav.innerText = i.title
-			nav.href = i.link
-			docfrag.appendChild(nav)
-		})
-		dom.appendChild(docfrag)
-	}
-	function loadCourse () {
-		let target = document.querySelector('#course')
-		target.innerHTML = template
-	}
+  (function loadPage () {
+    loadNav()
+    queryClass()
+    // loadCarousel()
+  })()
+  function queryClass () {
+    http
+      .get('http://study.163.com/webDev/couresByCategory.htm', {pageNo: 1, psize: 10, type: 10})
+      // .then((res) => {
+      //   console.log(res)
+      // })
+      // .catch((err) => {
+      //   console.log(err)
+      // })
+  }
+  function loadNav () {
+    let navs = CONFIG.navs
+    let dom = document.querySelector('#nav')
+    let docfrag  = document.createDocumentFragment()
+    navs.map((i) => {
+      let nav = document.createElement('a')
+      nav.innerText = i.title
+      nav.href = i.link
+      docfrag.appendChild(nav)
+    })
+    dom.appendChild(docfrag)
+  }
+  function loadCarousel () {
+    this.carousel = new Carousel({
+      imgs: CONFIG.carousel,
+      container: document.querySelector('#carousel'),
+      control: document.querySelector('#carouselControl')
+    })
+  }
+  function stopCarousel () {
+    this.carousel.stop()
+  }
+  function startCarousel () {
+    this.carousel.start()
+  }
+  function switchTab (index) {
+    let tabs = document.querySelector('#tab').children
+    removeClass(tabs)
+    tabs[index].className = 'tab-active'
+  }
+  function removeClass (els) {
+    Array.prototype.map.call(els, (el) => {
+      el.className = ''
+    })
+  }
 </script>
 </html>

@@ -1,4 +1,5 @@
 @import url(./reset.css);
+@import url(./carousel.css);
 @media only screen and (max-width: 320px){html{font-size: 9px;} }
 @media only screen and (min-width: 320px) and (max-width: 352px){html{font-size: 10px;} }
 @media only screen and (min-width: 352px) and (max-width: 384px){html{font-size: 11px;} }
@@ -11,18 +12,170 @@
 @media only screen and (min-width: 576px) and (max-width: 608px){html{font-size: 18px;} }
 @media only screen and (min-width: 608px) and (max-width: 640px){html{font-size: 19px;} }
 @media only screen and (min-width: 640px){html{font-size: 20px;} }
-.banner {
-	width: 100%;
+.ad {
+  font-size: 11px;
+  color: #333333;
+  background-color: #f3f3f3;
+  line-height: 36px;
+  padding: 0 200px;
 }
-.banner img {
-	width: 100%;
+html {
+  background-color: #f8f8f8;
 }
-.course-container {
-	/*margin: 10rem 20rem;*/
+.ad a {
+  color: #21a557;
+  padding: 0 5px;
 }
-.course {
-	max-width: 400px;
+header {
+  padding: 0 200px;
+  line-height: 90px;
+}
+#nav {
+  float: right;
 }
 #nav a {
-	padding: 10px;
+  font-size: 16px;
+  color: #666666;
+}
+.logo-container {
+  display: inline-block;
+}
+.logo {
+  color: #39a030;
+  font-size: 28px;
+  font-weight: 500;
+  padding-right: 0 10px;
+  line-height: 1;
+}
+.brand {
+  font-size: 22px;
+  line-height: 1;
+}
+/*------>fans<-----*/
+.fans-container {
+  display: inline-block;  
+}
+.fans-follow i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: url(./../images/fans-follow.png);
+}
+.fans-follow {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 21px;
+  background-color: #21a557;
+  padding: 0 10px;
+  border-radius: 3px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.fans-count {
+  font-size: 12px;
+  color: #666666;
+}
+/*------>courses<-----*/
+.courses {
+  padding: 55px 200px;
+  display: flex;
+}
+.course {
+  width: 33.3%;
+  flex: 1 1 auto;
+  position: relative;
+}
+.course-aside {
+  position: absolute;
+  left: 0;
+  margin-right: 22px;
+  display: inline-block;
+}
+.course-main {
+  display: inline-block;
+  margin-left: 100px;
+  max-width: 280px;
+}
+.course-title {
+  font-size: 22px;
+  color: #333333;
+}
+.course-footer {
+  font-size: 14px;
+  color: #21a557;
+}
+.course-content {
+  font-size: 14px;
+  color: #666666;
+}
+.course-aside {
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  background: url(./../images/course-yunketang.png);
+}
+/*------>banenr<-----*/
+.banner {
+  width: 100%;
+}
+.banner img {
+  width: 100%;
+}
+#nav a {
+  padding: 10px;
+}
+.intro-wrap {
+  overflow: scroll;
+  text-align: center;
+  white-space: nowrap;
+  margin-bottom: 75px;
+}
+.intro-wrap li {
+  display: inline;
+  width: 319px;
+  margin-left: -4px;
+}
+/*------>class<------*/
+.main {
+  padding: 0 200px;
+  height: 800px;
+}
+.tab {
+  font-size: 20px;
+}
+.tab a {
+  display: inline-block;
+  padding: 16px 60px;
+  background-color: #FFFFFF;
+  line-height: 1;
+  color: #666666;
+  box-shadow: 0 2px 2px rgba(0,0,0,.2);
+  cursor: pointer;
+}
+.tab-active {
+  background-color: #39a030 !important;
+  color: #FFFFFF !important;
+}
+.class-list {
+  margin-top: 30px;
+}
+.class-list {
+}
+.class-list li {
+  width: 226px;
+  display: inline-block;
+  background-color: #FFFFFF;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 2px rgba(0,0,0,.2);
+}
+.class-img {
+  height: 125px;
+  background: url(./../images/course-yunketang.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.class-content {
+  padding: 9px 5px;
 }

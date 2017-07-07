@@ -1,0 +1,36 @@
+.carousel-container {
+  position: relative;
+}
+.carousel-container img {
+  width: 100%;
+}
+.carousel-control {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+.carousel-control a {
+  display: inline-block;
+  margin: 0 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+}
+.active {
+  background-color: #333333 !important;
+}
+.animation-fade {
+  animation: carousel .5s ease;
+}
+@keyframes carousel {
+  from {
+    opacity: 0;
+  }
+  top {
+    opacity: 1;
+  }
+}
