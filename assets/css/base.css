@@ -17,7 +17,7 @@
   color: #333333;
   background-color: #f3f3f3;
   line-height: 36px;
-  padding: 0 200px;
+  padding: 0 8rem;
 }
 html {
   background-color: #f8f8f8;
@@ -27,7 +27,7 @@ html {
   padding: 0 5px;
 }
 header {
-  padding: 0 200px;
+  padding: 0 8rem;
   line-height: 90px;
 }
 #nav {
@@ -77,7 +77,7 @@ header {
 }
 /*------>courses<-----*/
 .courses {
-  padding: 55px 200px;
+  padding: 55px 8rem;
   display: flex;
 }
 .course {
@@ -137,8 +137,13 @@ header {
 }
 /*------>class<------*/
 .main {
-  padding: 0 200px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 8rem;
   height: 800px;
+}
+.main-inner {
+  position: relative;
 }
 .tab {
   font-size: 20px;
@@ -156,6 +161,10 @@ header {
   background-color: #39a030 !important;
   color: #FFFFFF !important;
 }
+.class-wrap {
+  position: relative;
+  margin-right: 224px;
+}
 .class-list {
   margin-top: 30px;
 }
@@ -171,11 +180,119 @@ header {
 }
 .class-img {
   height: 125px;
-  background: url(./../images/course-yunketang.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .class-content {
   padding: 9px 5px;
+}
+.class-name, .class-provider, .class-price {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.class-learnerCount {
+  font-size: 8px;
+  line-height: 2;
+  color: #dddddd;
+}
+.class-price {
+  color: #ff3f00;
+}
+/*------>分页<------*/
+.pagination {
+  position: absolute;
+  right: 20px;
+  height: 20px;
+}
+.pagination-top, .pagination-bottom {
+  display: inline-block;
+  width: 30px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background-color: #9dd8b1;
+  cursor: pointer;
+}
+#paginationPage a {
+  padding: 0 7px;
+  margin: 0 4px;
+  display: inline-block;
+  color: #707070;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+#paginationPage a:hover {
+  color: #39a030;
+}
+.page-active {
+  background-color: #9dd8b1;
+  color: #fff !important;
+}
+/*------>main侧边<------*/
+.main-aside {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.vid-container, .billboard {
+  width: 224px;
+  box-shadow: 0 0 2px rgba(0,0,0,.2);
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.vid-header, .billboard-header {
+  padding: 0 20px;
+  font-size: 16px;
+  line-height: 55px;
+  color: #333333;
+  border-bottom: 1px solid #ddd;
+}
+.vid-content {
+  padding: 0 20px;
+}
+.vid-summary {
+  font-size: 14px;
+  line-height: 1;
+  padding: 20px 0 9px 0; 
+  color: #666666;
+}
+.vid-content video{
+  width: 100%;
+  padding-bottom: 10px;
+}
+/*------>最热排行榜<------*/
+.billboard-list li {
+  position: relative;
+  margin: 20px;
+  list-style: none;
+}
+.billboard-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  line-height: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.billboard-content {
+  height: 50px;
+  margin-left: 60px;
+}
+.billboard-title {
+  font-size: 14px;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.billboard-viewer {
+  font-size: 10px;
+  color: #999999;
 }
