@@ -6,14 +6,14 @@
   <link rel="stylesheet" type="text/css" href="./assets/css/base.css">
 </head>
 <body id="app">
-  <div class="ad">
-    网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势！<a>立即查看&gt;</a>
+  <div class="ad" id="ad">
+    网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势！<a class="ad-check">立即查看&gt;</a><a class="ad-close" href="javascript:;" onclick="closeAd()">x不再提醒</a>
   </div>
   <header>
     <div class="logo-container">
       <span class="logo">EDU |</span><span class="brand"> 网易教育产品部</span>
       <div class="fans-container">
-        <span class="fans-follow"><i></i>&nbsp;关注</span>
+        <a class="fans-follow" href="javascript:;" onclick="follow()"><i></i>&nbsp;关注</a>
         <span class="fans-count">粉丝</span>
       </div>
     </div>
@@ -29,7 +29,7 @@
       <div class="course-main">
         <div class="course-titel">云课堂</div>
         <div class="course-content">网易旗下大型在线学习平台，该平台面向学习者提供海量免费、优质课程,创新的个性化学习体验，自由开放的交流互动环境。</div>
-        <div class="course-footer">了解更多 </div>
+        <a class="course-footer" href="http://open.163.com">了解更多 </a>
       </div>
     </div>
     <div class="course">
@@ -37,7 +37,7 @@
       <div class="course-main">
         <div class="course-titel">云课堂</div>
         <div class="course-content">网易旗下大型在线学习平台，该平台面向学习者提供海量免费、优质课程,创新的个性化学习体验，自由开放的交流互动环境。</div>
-        <div class="course-footer">了解更多 </div>
+        <a class="course-footer" href="http://study.163.com">了解更多 </a>
       </div>
     </div>
     <div class="course">
@@ -45,7 +45,7 @@
       <div class="course-main">
         <div class="course-titel">云课堂</div>
         <div class="course-content">网易旗下大型在线学习平台，该平台面向学习者提供海量免费、优质课程,创新的个性化学习体验，自由开放的交流互动环境。</div>
-        <div class="course-footer">了解更多 </div>
+        <a class="course-footer" href="http://www.icourse163.org">了解更多 </a>
       </div>
     </div>
   </section>
@@ -85,8 +85,21 @@
       </div>
     </div>
   </div>
+  <div class="login-container" id="login" style="display: block;">
+    <div class="login-forminner">
+      <form class="login-form" action="">
+        <h3 class="login-title">登录网易云课堂</h3>
+        <span class="login-close" onclick="closeLogin()">x</span>
+        <input type="text" name="userName" placeholder="账号" id="login-user">
+        <input type="text" name="password" placeholder="密码" id="login-psw">
+        <!-- <input type="submit" value="登录"> -->
+        <a class="login-submit" href="javascript:;" onclick="login()">登陆</a>
+      </form>
+    </div>
+  </div>
 </body>
 <script type="text/javascript" src="./lib/config.js"></script>
+<script type="text/javascript" src="./lib/login.js"></script>
 <script type="text/javascript" src="./lib/carousel.js"></script>
 <script type="text/javascript" src="./lib/http.js"></script>
 <script type="text/javascript" src="./lib/template.js"></script>
@@ -195,6 +208,7 @@ function loadNav () {
     let nav = document.createElement('a')
     nav.innerText = i.title
     nav.href = i.link
+    nav.target = i.target
     docfrag.appendChild(nav)
   })
   dom.appendChild(docfrag)
@@ -212,6 +226,12 @@ function stopCarousel () {
 function startCarousel () {
   this.carousel.start()
 }
+function login () {
+  LoginModel.login()
+}
+function closeLogin () {
+  LoginModel.closeLogin()
+}
 function switchTab (index) {
   let tabs = document.querySelector('#tab').children
   removeClass(tabs)
@@ -224,7 +244,39 @@ function removeClass (els) {
     el.className = ''
   })
 }
+function checkLogin () {
+  return new Promise((resolve, reject) => {
+    let user = document.cookie
+    if (!user) { //无cookie需要重新登陆
+      resolve()
+    } else {
+      reject()
+    }
+  })
+}
+function follow () {
+  checkLogin()
+  .then((res)=> {
+    LoginModel.showLogin()
+  })
+  .catch((err) => {
+    // showLoginForm()
+  })
+}
+function showAd () {
+  let watch = window.localStorage.getItem('ad')
+  if (watch) {
+    let ad = document.querySelector('#ad')
+    ad.style.display = 'none'
+  }
+}
+function closeAd () {
+  window.localStorage.setItem('ad', 1)
+  let ad = document.querySelector('#ad')
+  ad.style.display = 'none'
+}
 ;(function loadPage () {
+  showAd()
   loadNav()
   loadTab()
   loadCarousel()
